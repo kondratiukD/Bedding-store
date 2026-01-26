@@ -1,0 +1,27 @@
+@import "../../shared/index.scss";
+
+.decriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 66px;
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 8px;
+    }
+}
+
+
+.description__text {
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 16px;
+}
+
+.span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: $secondary-color;
+}

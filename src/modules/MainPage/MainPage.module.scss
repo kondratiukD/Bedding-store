@@ -1,0 +1,11 @@
+@import '../../shared/index.scss';
+
+.mainContainer {
+    margin-bottom: $margin-bottom-mobile;
+}
+
+.line {
+    height: 1px;
+    background-color: $gray-4;
+    margin: 40px 0;
+}

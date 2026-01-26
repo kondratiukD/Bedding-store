@@ -1,0 +1,17 @@
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue, $_duration: 0.3s) {
+  @include on-desktop {
+    transition: #{$_property} $_duration;
+
+    &:hover {
+      #{$_property}: $_toValue;
+    }
+  }
+}
+
+

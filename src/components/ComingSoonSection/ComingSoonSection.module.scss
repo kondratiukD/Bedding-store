@@ -1,0 +1,91 @@
+@import "../../shared/index.scss";
+
+.container {
+  margin-bottom: 40px;
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: bold;
+    color: $primary-color;
+
+    @include on-desktop {
+      font-size: 48px;
+    }
+  }
+
+  &__products {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    margin-right: -16px;
+    
+    // Приховати скролбар
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+    
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+
+    @include on-desktop {
+      margin-right: -56px;
+      padding-right: 56px;
+    }
+  }
+}
+
+.productCard {
+  flex: 0 0 auto;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-desktop {
+    width: 429px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 140px;
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      height: 429px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 8px;
+  }
+
+  &__material {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 300;
+    color: $secondary-color;
+    margin-bottom: 4px;
+  }
+
+  &__price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    color: $primary-color;
+  }
+}

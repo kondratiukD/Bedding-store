@@ -1,0 +1,145 @@
+@import "../../shared/index";
+
+.container {
+  position: relative;
+  margin-bottom: 40px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 21px;
+      align-items: flex-start;
+    }
+  }
+
+  &__logo {
+    display: none;
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -84px;
+      z-index: 1;
+      width: 100%;
+      pointer-events: none;
+
+      img {
+        width: auto;
+        height: 146px;
+        max-width: 500px;
+      }
+    }
+  }
+
+  &__imgs {
+    position: relative;
+    margin-bottom: $margin-bottom-mobile;
+    width: 100%;
+    z-index: 2;
+
+    @include on-desktop {
+      margin-bottom: 0;
+      flex: 0 0 60%;
+    }
+
+    .redCross {
+      position: absolute;
+      right: 0;
+      bottom: -32px;
+      width: 66px;
+      height: 66px;
+      pointer-events: none;
+      max-width: 100%;
+      transform: translate(0, 0);
+
+      @include on-desktop {
+        width: 66px;
+        height: 66px;
+        bottom: 20px;
+        left: 0;
+        right: auto;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__description {
+    width: 100%;
+    z-index: 2;
+
+    @include on-desktop {
+      flex: 0 0 40%;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include on-desktop {
+    margin-bottom: 56px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 32px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+
+    @include on-desktop {
+    gap: 16px;
+        padding: 22px 32px;
+
+    }
+
+    &Text {
+      color: inherit;
+    }
+
+    &--primary {
+      background-color: $button-color;
+      color: white;
+    }
+
+    &--secondary {
+      background-color: transparent;
+      border: 1px solid $primary-color;
+      color: $primary-color;
+    }
+  }
+
+  .buttonText {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .buttonIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
