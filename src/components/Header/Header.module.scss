@@ -4,7 +4,8 @@
   margin-bottom: 40px;
 
   @include on-desktop {
-      margin-bottom: 99px;
+      margin-bottom: 100px;
+      height: 100px;
     }
 
   &--mobile {
@@ -124,6 +125,7 @@
     color: $primary-color;
     text-decoration: none;
     letter-spacing: 0;
+    gap: 8px;
 
     @include on-desktop {
       display: flex;
@@ -134,6 +136,27 @@
 
     &--active {
       color: $button-color;
+    }
+  }
+
+  &__badge {
+    display: none;
+
+    @include on-desktop {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      padding: 8px 12px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      color: $white-color;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 600;
+      line-height: 1;
     }
   }
 }

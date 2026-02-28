@@ -1,27 +1,91 @@
 @import "../../shared/index.scss";
 
-.decriptions {
+.descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 66px;
+
+  @include on-desktop {
+    gap: 48px;
+  }
+
+  &__first {
+    @include on-desktop {
+      display: flex;
+      flex-direction: row;
+      gap: 22px;
+    }
+  }
+
+  &__second {
     display: flex;
     flex-direction: column;
-    gap: 66px;
+    align-items: flex-end;
+  }
 
-    img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin-bottom: 8px;
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 8px;
+
+    @include on-desktop {
+      margin-bottom: 0;
     }
-}
+  }
 
+  &__firstImg {
+    @include on-desktop {
+      width: 654px;
+      min-width: 654px;
+      height: 732px;
+      max-width: none;
+      flex-shrink: 0;
+    }
+  }
 
-.description__text {
-    font-family: 'JetBrains Mono', monospace;
+  &__secondImg {
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__mainContent {
+    @include on-desktop {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      min-width: 654px;
+    }
+  }
+
+  &__text {
+    font-family: "JetBrains Mono", monospace;
     margin-bottom: 16px;
-}
 
-.span {
-    font-family: 'JetBrains Mono', monospace;
+    @include on-desktop {
+      font-size: 14px;
+      margin-bottom: 24px;
+      max-width: 50ch;
+    }
+  }
+
+  &__spanContainer {
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__span {
+    font-family: "JetBrains Mono", monospace;
     font-size: 12px;
+    font-style: italic;
     color: $secondary-color;
+
+    @include on-desktop {
+      margin-top: 100px;
+    }
+  }
 }

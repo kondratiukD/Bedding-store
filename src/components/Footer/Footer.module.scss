@@ -2,13 +2,14 @@
 
 .footer {
   background-color: $gray-4;
+  padding: 0;
 
   &__content {
-    padding: 48px 16px;
+    padding: 48px $padding-mobile;
+    position: relative;
 
     @include on-desktop {
-      padding: 88px 56px;
-      // gap: 48px;
+      padding: 88px $padding-desktop;
     }
   }
 
@@ -21,8 +22,20 @@
       height: 58px;
 
       @include on-desktop {
+        width: auto;
         height: 298px;
+        max-width: 1040px;
       }
+    }
+
+    @include on-desktop {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      margin-bottom: 0;
+      pointer-events: none;
     }
   }
 
@@ -31,14 +44,39 @@
     flex-direction: column;
     gap: 24px;
     margin-bottom: 40px;
+
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 346px;
+    }
   }
-  
+
+  &__section {
+    @include on-desktop {
+      &:nth-child(1) {
+        order: 3;
+      }
+      &:nth-child(2) {
+        order: 1;
+      }
+      &:nth-child(3) {
+        order: 2;
+      }
+    }
+  }
+
   &__span {
     font-family: "JetBrains Mono", monospace;
     font-size: 16px;
     font-weight: 500;
     padding-left: 24px;
     margin-bottom: 4px;
+
+    @include on-desktop {
+      margin-bottom: 8px;
+    }
   }
 
   &__title {
@@ -50,13 +88,18 @@
     @include on-desktop {
       font-size: 32px;
       font-weight: 600;
+      margin-bottom: 16px;
     }
   }
 
   &__form {
     position: relative;
-    // display: flex;
-    // width: 100%;
+
+    @include on-desktop {
+      display: flex;
+      width: 100%;
+      min-width: 280px;
+    }
   }
 
   &__input {
@@ -91,14 +134,31 @@
   &__socials {
     display: flex;
     gap: 4px;
+
+    @include on-desktop {
+      gap: 0;
+    }
   }
 
   &__socialLink {
     padding: 12px;
 
+    @include on-desktop {
+      padding: 16px 24px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+
     img {
       width: 24px;
       height: 24px;
+
+      @include on-desktop {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 
@@ -115,6 +175,8 @@
 
     @include on-desktop {
       gap: 24px;
+      position: relative;
+      z-index: 1;
     }
   }
 
@@ -130,7 +192,13 @@
     display: flex;
     flex-direction: column;
     gap: 21px;
-    //max-width: 288px;
+
+    @include on-desktop {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 21px;
+      align-items: flex-start;
+    }
   }
 
   &__partnerRow {
@@ -138,6 +206,10 @@
     flex-direction: row;
     align-items: center;
     gap: 21px;
+
+    @include on-desktop {
+      display: contents;
+    }
   }
 
   &__partnerLogo {

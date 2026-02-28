@@ -1,0 +1,55 @@
+@import "../../shared/index.scss";
+
+.storePage {
+  // min-height: 100vh;
+  padding: 0px $padding-mobile $margin-bottom-mobile;
+
+  @include on-desktop {
+    padding: 0px $padding-desktop $margin-bottom-desktop;
+  }
+
+  &__filter {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__filterText {
+  }
+
+  &__filterButton {
+    // display: inline-flex;
+    max-width: 200px;
+    padding: 8px 5px 8px 37px;
+    margin-bottom: 16px;
+    background-color: $primary-color;
+    border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+
+    @include on-desktop {
+      max-width: 240px;
+      padding: 14px 24px;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    row-gap: 32px;
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+}

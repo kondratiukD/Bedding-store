@@ -4,7 +4,6 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer/Footer';
 
 export const App: React.FC = () => {
-  console.log('BEDDING STORE RUNNING ✅');
   return (
     <div className="App">
       <h1 hidden>Portal</h1>

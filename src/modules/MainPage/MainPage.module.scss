@@ -2,10 +2,18 @@
 
 .mainContainer {
     margin-bottom: $margin-bottom-mobile;
+
+    @include on-desktop {
+    margin-bottom: $margin-bottom-desktop;
+    }
 }
 
 .line {
     height: 1px;
     background-color: $gray-4;
-    margin: 40px 0;
+    margin-bottom: 40px;
+
+    @include on-desktop {
+    margin-bottom: 72px;
+    }
 }

@@ -1,0 +1,114 @@
+@import "../../shared/index.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  align-self: stretch;
+
+  &__image {
+    width: 100%;
+    height: 140px;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+
+    @include on-desktop {
+      height: 430px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__name {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: $primary-color;
+    margin-bottom: 8px;
+
+    @include on-desktop {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__material {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 300;
+    color: $secondary-color;
+    margin-bottom: 14px;
+
+    @include on-desktop {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__price {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: $primary-color;
+    margin-bottom: 8px;
+
+    @include on-desktop {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__view {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 32px;
+    border-radius: 999px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    margin-top: auto;
+    flex-shrink: 0;
+
+    @include on-desktop {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &--primary {
+      background-color: $button-color;
+      color: $white-color;
+    }
+
+    &--secondary {
+      background-color: transparent;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+    }
+  }
+}
+
+.card--carousel .card__image {
+  @include on-desktop {
+    height: 230px;
+  }
+}
+
+.card--store .card__image {
+  height: auto;
+  aspect-ratio: 1;
+}

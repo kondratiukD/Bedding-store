@@ -3,6 +3,10 @@
 .container {
   margin-bottom: 40px;
 
+  @include on-desktop {
+  margin-bottom: 72px;
+    }
+
   &__title {
     margin-bottom: 24px;
     font-size: 28px;

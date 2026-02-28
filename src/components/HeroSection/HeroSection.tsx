@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./HeroSection.module.scss";
 
 export const HeroSection: React.FC = () => {
@@ -25,14 +26,17 @@ export const HeroSection: React.FC = () => {
           </h1>
 
           <div className={styles.container__buttons}>
-            <button className={`${styles.button} ${styles["button--primary"]}`}>
+            <Link
+              to="/order"
+              className={`${styles.button} ${styles["button--primary"]}`}
+            >
               <span className={styles.buttonText}>Make an order</span>
               <img
                 className={styles.buttonIcon}
                 src="/img/icons/Cart.svg"
                 alt="Make an order"
               />
-            </button>
+            </Link>
 
             <button className={`${styles.button} ${styles["button--secondary"]}`}>
               <span className={styles.buttonText}>Create a profile</span>
