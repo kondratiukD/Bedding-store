@@ -2,12 +2,14 @@ import React, { useCallback, useState } from "react";
 import styles from "./Header.module.scss";
 import { Link, NavLink } from "react-router-dom";
 import classNames from "classnames";
+import { useCart } from "../../context/CartContext";
 
 const navItems = [
   { to: "/", label: "Main page" },
   { to: "/store", label: "Store" },
   { to: "/cart", label: "Cart" },
   { to: "/about", label: "About us" },
+  { to: "/profile", label: "Profile" },
 ];
 
 const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
@@ -26,8 +28,12 @@ type Props = {
 
 export const Header: React.FC<Props> = React.memo(function Header({ user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { cartItems } = useCart();
 
   const logoUrl = `/img/Logo-Drimayko.svg`;
+
+  const cartItemsCount = cartItems.length;
+  const cartBadgeText = cartItemsCount > 9 ? '9+' : cartItemsCount > 0 ? cartItemsCount : null;
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
@@ -36,6 +42,12 @@ export const Header: React.FC<Props> = React.memo(function Header({ user }) {
   return (
     <>
       <header className={styles.header}>
+        <div className={styles["header--desktop"]}>
+          <Link className={styles.logoLink} to="/">
+            <img src={logoUrl} alt="Logo" />
+          </Link>
+        </div>
+
         <div className={styles["header--mobile"]}>
           <div className={styles.top}>
             <Link className={styles.logoLink} to="/">
@@ -82,8 +94,8 @@ export const Header: React.FC<Props> = React.memo(function Header({ user }) {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {label}
-                    {to === '/cart' && (
-                      <span className={styles.nav__badge}>2</span>
+                    {to === '/cart' && cartBadgeText && (
+                      <span className={styles.nav__badge}>{cartBadgeText}</span>
                     )}
                   </NavLink>
                 </li>

@@ -7,11 +7,11 @@ export const App: React.FC = () => {
   return (
     <div className="App">
       <h1 hidden>Portal</h1>
-      <Header />
+      <Header user={null} />
 
-      <div>
+      <main className="App__main">
         <Outlet />
-      </div>
+      </main>
       <Footer />
     </div>
   );

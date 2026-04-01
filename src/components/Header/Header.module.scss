@@ -4,9 +4,33 @@
   margin-bottom: 40px;
 
   @include on-desktop {
-      margin-bottom: 100px;
-      height: 100px;
+    margin-bottom: 100px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $padding-desktop;
+  }
+
+  &--desktop {
+    display: none;
+
+    @include on-desktop {
+      display: block;
+      padding: 0;
+      height: auto;
+      display: flex;
+      align-items: center;
     }
+
+    .logoLink {
+      img {
+        width: 180px;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
 
   &--mobile {
     @include on-desktop {
@@ -65,6 +89,8 @@
     margin-bottom: 0;
     padding: 0;
     height: auto;
+    display: flex;
+    align-items: center;
   }
 
   &__list {

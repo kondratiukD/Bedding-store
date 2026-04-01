@@ -1,0 +1,82 @@
+@import "../../shared/index.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+
+  @include on-desktop {
+    margin-top: 48px;
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $gray-4;
+    background-color: $white-color;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $primary-color;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    @include on-desktop {
+      &:not(:disabled) {
+        @include hover(background-color, $gray-4);
+      }
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  &__page {
+    min-width: 40px;
+    height: 40px;
+    border: 1px solid $gray-4;
+    background-color: $white-color;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary-color;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    @include on-desktop {
+      @include hover(background-color, $gray-4);
+    }
+
+    &--active {
+      background-color: $primary-color;
+      color: $white-color;
+      border-color: $primary-color;
+
+      @include on-desktop {
+        &:hover {
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  &__ellipsis {
+    padding: 0 4px;
+    color: $secondary-color;
+  }
+}

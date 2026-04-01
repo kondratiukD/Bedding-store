@@ -38,14 +38,17 @@ export const HeroSection: React.FC = () => {
               />
             </Link>
 
-            <button className={`${styles.button} ${styles["button--secondary"]}`}>
+            <Link
+              to="/profile"
+              className={`${styles.button} ${styles["button--secondary"]}`}
+            >
               <span className={styles.buttonText}>Create a profile</span>
               <img
                 className={styles.buttonIcon}
                 src="/img/icons/Arrow-right-black.svg"
                 alt="Create a profile"
               />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
