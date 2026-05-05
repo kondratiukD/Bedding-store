@@ -1,106 +1,8 @@
 import { useRef } from "react";
-import { ProductCard, type Product } from "../../components/ProductCard";
+import type { Product } from "../../data/products";
+import { ProductCard } from "../../components/ProductCard";
+import { newProducts, mostChosenProducts, forChildrenProducts } from "../../data/products";
 import styles from "./OrderPage.module.scss";
-
-const newProducts: Product[] = [
-  {
-    id: 1,
-    image: "/img/mainPic/description-1.png",
-    name: "Dream in pales",
-    material: "cotton",
-    price: "12$",
-  },
-  {
-    id: 2,
-    image: "/img/mainPic/description-2.png",
-    name: "Don't wake me up!",
-    material: "cotton",
-    price: "14.9$",
-  },
-  {
-    id: 3,
-    image: "/img/mainPic/mainPillow.png",
-    name: "Freshness",
-    material: "cotton",
-    price: "11.9$",
-  },
-];
-
-const mostChosen: Product[] = [
-  {
-    id: 4,
-    image: "/img/mainPic/description-1.png",
-    name: "In a dream - somewhere here",
-    material: "cotton",
-    price: "12.4$",
-  },
-  {
-    id: 5,
-    image: "/img/mainPic/description-2.png",
-    name: "Dream in pales",
-    material: "cotton",
-    price: "13.1$",
-  },
-  {
-    id: 6,
-    image: "/img/mainPic/mainPillow.png",
-    name: "Pajama conspiracy",
-    material: "cotton",
-    price: "12$",
-  },
-  {
-    id: 7,
-    image: "/img/mainPic/description-1.png",
-    name: "Don't wake me up!",
-    material: "cotton",
-    price: "14.5$",
-  },
-  {
-    id: 8,
-    image: "/img/mainPic/description-2.png",
-    name: "Not for Mondays",
-    material: "cotton",
-    price: "11.8$",
-  },
-];
-
-const forChildren: Product[] = [
-  {
-    id: 9,
-    image: "/img/mainPic/description-1.png",
-    name: "Stars under the pillow",
-    material: "cotton",
-    price: "13$",
-  },
-  {
-    id: 10,
-    image: "/img/mainPic/description-2.png",
-    name: "Cloud for the night",
-    material: "cotton",
-    price: "12$",
-  },
-  {
-    id: 11,
-    image: "/img/mainPic/mainPillow.png",
-    name: "Where does the rainbow sleep?",
-    material: "cotton",
-    price: "12$",
-  },
-  {
-    id: 12,
-    image: "/img/mainPic/description-1.png",
-    name: "Under the bed blanket lives a fairy tale",
-    material: "cotton",
-    price: "14.5$",
-  },
-  {
-    id: 13,
-    image: "/img/mainPic/description-2.png",
-    name: "Journey to the Moon",
-    material: "cotton",
-    price: "11.8$",
-  },
-];
 
 type ProductSectionProps = {
   title: string;
@@ -166,7 +68,7 @@ export const OrderPage: React.FC = () => {
 
       <ProductSection
         title="Most choosen"
-        products={mostChosen}
+        products={mostChosenProducts}
         buttonVariant="secondary"
         layout="carousel"
       />
@@ -174,7 +76,7 @@ export const OrderPage: React.FC = () => {
 
       <ProductSection
         title="For children"
-        products={forChildren}
+        products={forChildrenProducts}
         buttonVariant="secondary"
         layout="carousel"
       />

@@ -78,11 +78,60 @@
     }
   }
 
+  &__sortGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  &__sortLabel {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: $secondary-color;
+  }
+
+  &__sortSelect {
+    min-width: 180px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    border: 1px solid $gray-4;
+    background-color: $white-color;
+    color: $primary-color;
+    font-family: "JetBrains Mono", monospace;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: $primary-color;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
   &__filterWrapper {
     position: relative;
     width: 100%;
     max-width: 420px;
     display: block;
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__count {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    color: $secondary-color;
   }
 
   &__filterButton {

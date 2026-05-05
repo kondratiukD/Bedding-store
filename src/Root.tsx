@@ -4,6 +4,7 @@ import { CartProvider } from "./context/CartContext";
 import { MainPage } from "./modules/MainPage";
 import { OrderPage } from "./modules/OrderPage";
 import { StorePage } from "./modules/StorePage";
+import { ProductDetailPage } from "./modules/ProductDetailPage";
 import { CartPage } from "./modules/CartPage";
 import { AboutPage } from "./modules/AboutPage";
 import { ProfilePage } from "./modules/ProfilePage";
@@ -16,6 +17,7 @@ export const Root: React.FC = () => (
           <Route index element={<MainPage />} />
           <Route path="order" element={<OrderPage />} />
           <Route path="store" element={<StorePage />} />
+          <Route path="store/:productId" element={<ProductDetailPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="profile" element={<ProfilePage />} />
