@@ -42,7 +42,7 @@ export const CartPage: React.FC = () => {
             {cartItems.map((item) => (
               <div key={item.id} className={styles.cartItem}>
                 <div className={styles.cartItem__image}>
-                  <img src={item.image} alt={item.name} />
+                  <img src={item.image} alt={item.name} loading="lazy" decoding="async" />
                 </div>
 
                 <div className={styles.cartItem__details}>

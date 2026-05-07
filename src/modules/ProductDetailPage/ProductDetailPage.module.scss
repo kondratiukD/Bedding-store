@@ -1,0 +1,179 @@
+@import "../../shared/index.scss";
+
+.productDetail {
+  padding: 0px $padding-mobile $margin-bottom-mobile;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-desktop {
+    padding: 0px $padding-desktop $margin-bottom-desktop;
+    gap: 32px;
+  }
+}
+
+.productDetail__topBar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.productDetail__backButton,
+.productDetail__catalogLink {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 2px solid $primary-color;
+  background-color: $white-color;
+  color: $primary-color;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.productDetail__backButton:hover,
+.productDetail__catalogLink:hover {
+  background-color: rgba($primary-color, 0.09);
+  transform: translateY(-1px);
+}
+
+.productDetail__backButton:active,
+.productDetail__catalogLink:active {
+  transform: scale(0.98);
+}
+
+.productDetail__content {
+  display: grid;
+  gap: 24px;
+
+  @include on-desktop {
+    grid-template-columns: 1.05fr 1fr;
+    align-items: start;
+  }
+}
+
+.productDetail__imageWrapper {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+
+  img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.productDetail__info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.productDetail__material {
+  font-family: "JetBrains Mono", monospace;
+  color: $secondary-color;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.productDetail__title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 32px;
+  line-height: 1.1;
+  color: $primary-color;
+  margin: 0;
+}
+
+.productDetail__price {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: $button-color;
+  margin: 0;
+}
+
+.productDetail__description {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  color: $secondary-color;
+  line-height: 1.6;
+}
+
+.productDetail__listWrapper {
+  background-color: $white-color;
+  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.productDetail__detailsTitle {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: $primary-color;
+}
+
+.productDetail__detailsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.productDetail__detailItem {
+  font-family: "JetBrains Mono", monospace;
+  color: $secondary-color;
+  padding-left: 16px;
+  position: relative;
+}
+
+.productDetail__detailItem::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: $button-color;
+}
+
+.productDetail__actionButton {
+  width: fit-content;
+  max-width: 100%;
+  padding: 16px 32px;
+  border-radius: 999px;
+  border: none;
+  background-color: $button-color;
+  color: $white-color;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.productDetail__actionButton:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+.productDetail__actionButton:active {
+  transform: scale(0.98);
+}
+
+.detailNotFound {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.detailNotFound__link {
+  display: inline-block;
+  margin-top: 16px;
+  color: $button-color;
+  text-decoration: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+}

@@ -1,29 +1,18 @@
-import { useState, useMemo, useCallback } from 'react';
-import { ProductCard, type Product } from '../../components/ProductCard';
+import { useState, useMemo, useCallback, type ChangeEvent } from 'react';
+import { ProductCard } from '../../components/ProductCard';
 import { ProductFilter, type FilterOptions } from '../../components/ProductFilter';
 import { Pagination } from '../../components/Pagination';
+import { storeProducts } from '../../data/products';
 import styles from './StorePage.module.scss';
 
-const storeProducts: Product[] = [
-  { id: 1, image: '/img/mainPic/description-1.png', name: 'Moonlight', material: 'sateen', price: '12.5$' },
-  { id: 2, image: '/img/mainPic/description-2.png', name: 'Morning dew', material: 'sateen', price: '14$' },
-  { id: 3, image: '/img/mainPic/mainPillow.png', name: 'Lavender dreams', material: 'sateen', price: '13.5$' },
-  { id: 4, image: '/img/mainPic/description-1.png', name: 'Silence of the Carpathians', material: 'cotton', price: '12$' },
-  { id: 5, image: '/img/mainPic/description-2.png', name: 'Starry blanket', material: 'cotton', price: '12.5$' },
-  { id: 6, image: '/img/mainPic/mainPillow.png', name: 'Sunny field', material: 'linen', price: '12.5$' },
-  { id: 7, image: '/img/mainPic/description-1.png', name: 'Ocean waves', material: 'sateen', price: '15$' },
-  { id: 8, image: '/img/mainPic/description-2.png', name: 'Forest dreams', material: 'cotton', price: '13$' },
-  { id: 9, image: '/img/mainPic/mainPillow.png', name: 'Sky blue', material: 'linen', price: '14.5$' },
-  { id: 10, image: '/img/mainPic/description-1.png', name: 'Rose garden', material: 'sateen', price: '16$' },
-  { id: 11, image: '/img/mainPic/description-2.png', name: 'Sunset glow', material: 'cotton', price: '13.5$' },
-  { id: 12, image: '/img/mainPic/mainPillow.png', name: 'Golden hour', material: 'linen', price: '15$' },
-];
-
 const ITEMS_PER_PAGE = 6;
+
+type SortOption = 'default' | 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc';
 
 export const StorePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [sortOption, setSortOption] = useState<SortOption>('default');
   const [filters, setFilters] = useState<FilterOptions>({
     materials: [],
     priceRange: [0, 100],
@@ -44,16 +33,38 @@ export const StorePage: React.FC = () => {
     });
   }, [filters]);
 
-  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const sortedProducts = useMemo(() => {
+    const products = [...filteredProducts];
+
+    switch (sortOption) {
+      case 'price-asc':
+        return products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+      case 'price-desc':
+        return products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+      case 'name-asc':
+        return products.sort((a, b) => a.name.localeCompare(b.name));
+      case 'name-desc':
+        return products.sort((a, b) => b.name.localeCompare(a.name));
+      default:
+        return products;
+    }
+  }, [filteredProducts, sortOption]);
+
+  const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE);
 
   const displayedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
-    return filteredProducts.slice(startIndex, endIndex);
-  }, [filteredProducts, currentPage]);
+    return sortedProducts.slice(startIndex, endIndex);
+  }, [sortedProducts, currentPage]);
 
   const handleFilterChange = useCallback((newFilters: FilterOptions) => {
     setFilters(newFilters);
+    setCurrentPage(1);
+  }, []);
+
+  const handleSortChange = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+    setSortOption(event.target.value as SortOption);
     setCurrentPage(1);
   }, []);
 
@@ -74,9 +85,9 @@ export const StorePage: React.FC = () => {
             type="button"
             className={`${styles.storePage__filterButton} ${isFilterOpen ? styles['storePage__filterButton--open'] : ''}`}
             onClick={() => setIsFilterOpen((prev) => !prev)}
-            aria-label={isFilterOpen ? "Close filters" : "Open filters"}
+            aria-label={isFilterOpen ? 'Close filters' : 'Open filters'}
           >
-            <span>{isFilterOpen ? "Close filters" : "Open filters"}</span>
+            <span>{isFilterOpen ? 'Close filters' : 'Open filters'}</span>
             <img
               src="/img/icons/Arrow-right-light.svg"
               alt="Toggle filters"
@@ -95,19 +106,40 @@ export const StorePage: React.FC = () => {
         </div>
 
         <div className={styles.storePage__stats}>
-          <span className={styles.storePage__count}>{filteredProducts.length} products</span>
+          <div className={styles.storePage__sortGroup}>
+            <label htmlFor="sortOption" className={styles.storePage__sortLabel}>
+              Sort by
+            </label>
+            <select
+              id="sortOption"
+              value={sortOption}
+              onChange={handleSortChange}
+              className={styles.storePage__sortSelect}
+            >
+              <option value="default">Default</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="name-asc">Name: A–Z</option>
+              <option value="name-desc">Name: Z–A</option>
+            </select>
+          </div>
+          <span className={styles.storePage__count}>{sortedProducts.length} products</span>
         </div>
       </div>
 
       <div className={styles.storePage__container}>
-
         <div className={styles.storePage__content}>
           {displayedProducts.length > 0 ? (
             <>
               <div className={styles.storePage__products}>
                 {displayedProducts.map((product) => (
                   <div key={product.id} className={styles.productCard}>
-                    <ProductCard product={product} buttonVariant="secondary" variant="store" />
+                    <ProductCard
+                      product={product}
+                      buttonVariant="secondary"
+                      variant="store"
+                      detailPath={`/store/${product.id}`}
+                    />
                   </div>
                 ))}
               </div>
