@@ -30,7 +30,7 @@ export const Header: React.FC<Props> = React.memo(function Header({ user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartItems } = useCart();
 
-  const logoUrl = `/img/Logo-Drimayko.svg`;
+  const logoUrl = `img/Logo-Drimayko.svg`;
 
   const cartItemsCount = cartItems.length;
   const cartBadgeText = cartItemsCount > 9 ? '9+' : cartItemsCount > 0 ? cartItemsCount : null;
