@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import styles from "./Footer.module.scss";
 
 export const Footer: React.FC = () => {
-  const logoUrl = "/img/Logo-Drimayko-Light.svg";
+  const logoUrl = "img/Logo-Drimayko-Light.svg";
 
   const partnerLogos = [
-    { src: "/img/footerPic/img1x2.png", w: 124, h: 59},
-    { src: "/img/footerPic/img2x2.png", w: 124, h: 60},
-    { src: "/img/footerPic/img3x2.png", w: 80, h: 78},
-    { src: "/img/footerPic/img4x2.png", w: 98, h: 69},
-    { src: "/img/footerPic/img5x2.png", w: 80, h: 80},
-    { src: "/img/footerPic/img6x2.png", w: 124, h: 70},
+    { src: "img/footerPic/img1x2.png", w: 124, h: 59},
+    { src: "img/footerPic/img2x2.png", w: 124, h: 60},
+    { src: "img/footerPic/img3x2.png", w: 80, h: 78},
+    { src: "img/footerPic/img4x2.png", w: 98, h: 69},
+    { src: "img/footerPic/img5x2.png", w: 80, h: 80},
+    { src: "img/footerPic/img6x2.png", w: 124, h: 70},
   ];
 
   return (
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                 className={styles.footer__input}
               />
               <button type="submit" className={styles.footer__sendButton}>
-                <img src="/img/icons/SendButton.svg" alt="Send" />
+                <img src="img/icons/SendButton.svg" alt="Send" />
               </button>
             </form>
           </div>
@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.footer__socialLink}
               >
-                <img src="/img/icons/Facebook.svg" alt="Facebook" />
+                <img src="img/icons/Facebook.svg" alt="Facebook" />
               </a>
               <a
                 href="https://instagram.com/..."
@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.footer__socialLink}
               >
-                <img src="/img/icons/Insta.svg" alt="Instagram" />
+                <img src="img/icons/Insta.svg" alt="Instagram" />
               </a>
               <a
                 href="https://t.me/..."
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.footer__socialLink}
               >
-                <img src="/img/icons/Telegram.svg" alt="Telegram" />
+                <img src="img/icons/Telegram.svg" alt="Telegram" />
               </a>
               <a
                 href="https://tiktok.com/..."
@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.footer__socialLink}
               >
-                <img src="/img/icons/TikTok.svg" alt="TikTok" />
+                <img src="img/icons/TikTok.svg" alt="TikTok" />
               </a>
             </div>
           </div>

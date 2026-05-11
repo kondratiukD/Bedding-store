@@ -59,7 +59,7 @@ export const Header: React.FC<Props> = React.memo(function Header({ user }) {
               className={styles.toggleMenu}
               aria-label="Toggle menu"
             >
-              <img src="/img/icons/Burger.svg" />
+              <img src="img/icons/Burger.svg" />
             </button>
           </div>
         </div>
@@ -77,7 +77,7 @@ export const Header: React.FC<Props> = React.memo(function Header({ user }) {
               className={styles.toggleMenu}
               aria-label="Toggle menu"
             >
-              <img src="/img/icons/Close.svg" />
+              <img src="img/icons/Close.svg" />
             </button>
           </div>
 
@@ -110,7 +110,7 @@ export const Header: React.FC<Props> = React.memo(function Header({ user }) {
                   {user.avatarUrl ? (
                     <img src={user.avatarUrl} alt={user.name} />
                   ) : (
-                    <img src="/img/icons/profile.svg" alt={user.name} />
+                    <img src="img/icons/profile.svg" alt={user.name} />
                   )}
                 </div>
 
@@ -121,7 +121,7 @@ export const Header: React.FC<Props> = React.memo(function Header({ user }) {
                 <span className={styles.guestText}>You are not logged in.</span>
                 <img
                   className={styles.guestImg}
-                  src="/img/drowsy-cat.png"
+                  src="img/drowsy-cat.png"
                   alt="Not logged in"
                 />
               </div>

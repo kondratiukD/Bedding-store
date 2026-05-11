@@ -45,7 +45,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
         onClick={handleMoreClick}
         aria-label="Scroll carousel right"
       >
-        <img src="/img/icons/Arrow-right-light.svg" alt="Arrow right" />
+        <img src="img/icons/Arrow-right-light.svg" alt="Arrow right" />
         <span className={styles.spanMore}>More</span>
       </button>
     )}

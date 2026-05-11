@@ -15,7 +15,7 @@ export const allProducts: Product[] = [
   {
     id: 1,
     slug: 'moonlight',
-    image: '/img/mainPic/description-1.png',
+    image: 'img/mainPic/description-1.png',
     name: 'Moonlight',
     material: 'sateen',
     price: '12.50$',
@@ -26,7 +26,7 @@ export const allProducts: Product[] = [
   {
     id: 2,
     slug: 'morning-dew',
-    image: '/img/mainPic/description-2.png',
+    image: 'img/mainPic/description-2.png',
     name: 'Morning dew',
     material: 'sateen',
     price: '14.00$',
@@ -37,7 +37,7 @@ export const allProducts: Product[] = [
   {
     id: 3,
     slug: 'lavender-dreams',
-    image: '/img/mainPic/mainPillow.png',
+    image: 'img/mainPic/mainPillow.png',
     name: 'Lavender dreams',
     material: 'sateen',
     price: '13.50$',
@@ -48,7 +48,7 @@ export const allProducts: Product[] = [
   {
     id: 4,
     slug: 'silence-of-the-carpathians',
-    image: '/img/mainPic/description-1.png',
+    image: 'img/mainPic/description-1.png',
     name: 'Silence of the Carpathians',
     material: 'cotton',
     price: '12.00$',
@@ -59,7 +59,7 @@ export const allProducts: Product[] = [
   {
     id: 5,
     slug: 'starry-blanket',
-    image: '/img/mainPic/description-2.png',
+    image: 'img/mainPic/description-2.png',
     name: 'Starry blanket',
     material: 'cotton',
     price: '12.50$',
@@ -70,7 +70,7 @@ export const allProducts: Product[] = [
   {
     id: 6,
     slug: 'sunny-field',
-    image: '/img/mainPic/mainPillow.png',
+    image: 'img/mainPic/mainPillow.png',
     name: 'Sunny field',
     material: 'linen',
     price: '12.50$',
@@ -81,7 +81,7 @@ export const allProducts: Product[] = [
   {
     id: 7,
     slug: 'ocean-waves',
-    image: '/img/mainPic/description-1.png',
+    image: 'img/mainPic/description-1.png',
     name: 'Ocean waves',
     material: 'sateen',
     price: '15.00$',
@@ -92,7 +92,7 @@ export const allProducts: Product[] = [
   {
     id: 8,
     slug: 'forest-dreams',
-    image: '/img/mainPic/description-2.png',
+    image: 'img/mainPic/description-2.png',
     name: 'Forest dreams',
     material: 'cotton',
     price: '13.00$',
@@ -103,7 +103,7 @@ export const allProducts: Product[] = [
   {
     id: 9,
     slug: 'sky-blue',
-    image: '/img/mainPic/mainPillow.png',
+    image: 'img/mainPic/mainPillow.png',
     name: 'Sky blue',
     material: 'linen',
     price: '14.50$',
@@ -114,7 +114,7 @@ export const allProducts: Product[] = [
   {
     id: 10,
     slug: 'rose-garden',
-    image: '/img/mainPic/description-1.png',
+    image: 'img/mainPic/description-1.png',
     name: 'Rose garden',
     material: 'sateen',
     price: '16.00$',
@@ -125,7 +125,7 @@ export const allProducts: Product[] = [
   {
     id: 11,
     slug: 'sunset-glow',
-    image: '/img/mainPic/description-2.png',
+    image: 'img/mainPic/description-2.png',
     name: 'Sunset glow',
     material: 'cotton',
     price: '13.50$',
@@ -136,7 +136,7 @@ export const allProducts: Product[] = [
   {
     id: 12,
     slug: 'golden-hour',
-    image: '/img/mainPic/mainPillow.png',
+    image: 'img/mainPic/mainPillow.png',
     name: 'Golden hour',
     material: 'linen',
     price: '15.00$',
@@ -147,7 +147,7 @@ export const allProducts: Product[] = [
   {
     id: 13,
     slug: 'tenderness',
-    image: '/img/mainPic/description-1.png',
+    image: 'img/mainPic/description-1.png',
     name: 'Tenderness',
     material: 'sateen',
     price: '12.30$',
@@ -159,7 +159,7 @@ export const allProducts: Product[] = [
   {
     id: 14,
     slug: 'sweet-dream',
-    image: '/img/mainPic/description-2.png',
+    image: 'img/mainPic/description-2.png',
     name: 'Sweet dream',
     material: 'cotton',
     price: '15.00$',
@@ -171,7 +171,7 @@ export const allProducts: Product[] = [
   {
     id: 15,
     slug: 'pure',
-    image: '/img/mainPic/mainPillow.png',
+    image: 'img/mainPic/mainPillow.png',
     name: 'Pure',
     material: 'cotton',
     price: '18.00$',
@@ -183,7 +183,7 @@ export const allProducts: Product[] = [
   {
     id: 16,
     slug: 'comfort',
-    image: '/img/mainPic/description-1.png',
+    image: 'img/mainPic/description-1.png',
     name: 'Comfort',
     material: 'sateen',
     price: '14.50$',

@@ -13,7 +13,7 @@ export const AboutSection: React.FC = () => {
           </p>
           <img
             className={styles.descriptions__firstImg}
-            src="/img/mainPic/description-1.png"
+            src="img/mainPic/description-1.png"
             alt="Pillow"
           />
         </div>
@@ -35,7 +35,7 @@ export const AboutSection: React.FC = () => {
         </p>
         <img
           className={styles.descriptions__secondImg}
-          src="/img/mainPic/description-2.png"
+          src="img/mainPic/description-2.png"
           alt="Pillow"
         />
       </div>

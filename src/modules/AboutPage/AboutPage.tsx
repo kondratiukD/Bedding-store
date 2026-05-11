@@ -28,7 +28,7 @@ export const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className={styles.section__image}>
-            <img src="/img/mainPic/mainPillow.png" alt="Quality bedding" />
+            <img src="img/mainPic/mainPillow.png" alt="Quality bedding" />
           </div>
         </div>
       </section>
@@ -36,7 +36,7 @@ export const AboutPage: React.FC = () => {
       <section className={styles.section + ' ' + styles['section--alternate']}>
         <div className={styles.section__container}>
           <div className={styles.section__image}>
-            <img src="/img/mainPic/description-1.png" alt="Red Cross Partnership" />
+            <img src="img/mainPic/description-1.png" alt="Red Cross Partnership" />
           </div>
           <div className={styles.section__content}>
             <h2 className={styles.section__title}>Our Partnership with Red Cross</h2>

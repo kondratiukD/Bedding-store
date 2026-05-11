@@ -89,7 +89,7 @@ export const StorePage: React.FC = () => {
           >
             <span>{isFilterOpen ? 'Close filters' : 'Open filters'}</span>
             <img
-              src="/img/icons/Arrow-right-light.svg"
+              src="img/icons/Arrow-right-light.svg"
               alt="Toggle filters"
               aria-hidden="true"
               className={isFilterOpen ? styles.storePage__filterIconOpen : styles.storePage__filterIcon}

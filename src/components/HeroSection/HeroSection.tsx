@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./HeroSection.module.scss";
 
 export const HeroSection: React.FC = () => {
-  const logoUrl = "/img/Logo-Drimayko-Light.svg";
+  const logoUrl = "img/Logo-Drimayko-Light.svg";
 
   return (
     <div className={styles.container}>
@@ -12,10 +12,10 @@ export const HeroSection: React.FC = () => {
       
       <div className={styles.container__info}>
         <div className={styles.container__imgs}>
-          <img src="/img/mainPic/mainPillow.png" alt="Main pillow" />
+          <img src="img/mainPic/mainPillow.png" alt="Main pillow" />
           <img
             className={styles.redCross}
-            src="/img/Red-Cross-Logo2.png"
+            src="img/Red-Cross-Logo2.png"
             alt="Red Cross badge"
           />
         </div>
@@ -33,7 +33,7 @@ export const HeroSection: React.FC = () => {
               <span className={styles.buttonText}>Make an order</span>
               <img
                 className={styles.buttonIcon}
-                src="/img/icons/Cart.svg"
+                src="img/icons/Cart.svg"
                 alt="Make an order"
               />
             </Link>
@@ -45,7 +45,7 @@ export const HeroSection: React.FC = () => {
               <span className={styles.buttonText}>Create a profile</span>
               <img
                 className={styles.buttonIcon}
-                src="/img/icons/Arrow-right-black.svg"
+                src="img/icons/Arrow-right-black.svg"
                 alt="Create a profile"
               />
             </Link>
