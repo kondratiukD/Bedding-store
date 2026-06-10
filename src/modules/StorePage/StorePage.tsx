@@ -16,7 +16,7 @@ export const StorePage: React.FC = () => {
   const [filters, setFilters] = useState<FilterOptions>({
     sizes: [],
     materials: [],
-    priceRange: [0, 50],
+    priceRange: [0, 100],
     colors: [],
   });
 
@@ -99,11 +99,17 @@ export const StorePage: React.FC = () => {
         <div className={styles.storePage__filterWrapper}>
           <button
             type="button"
-            className={styles.storePage__filterButton}
-            onClick={() => setIsFilterOpen(true)}
-            aria-label="Open filters"
+            className={`${styles.storePage__filterButton} ${isFilterOpen ? styles['storePage__filterButton--open'] : ''}`}
+            onClick={() => setIsFilterOpen((prev) => !prev)}
+            aria-label={isFilterOpen ? 'Close filters' : 'Open filters'}
           >
-            <span>{'>'}</span>
+            <span>{isFilterOpen ? 'Close filters' : 'Open filters'}</span>
+            <img
+              src="img/icons/Arrow-right-light.svg"
+              alt="Toggle filters"
+              aria-hidden="true"
+              className={isFilterOpen ? styles.storePage__filterIconOpen : styles.storePage__filterIcon}
+            />
           </button>
 
           <ProductFilter
@@ -168,7 +174,7 @@ export const StorePage: React.FC = () => {
               <button
                 type="button"
                 className={styles.storePage__resetButton}
-                onClick={() => handleFilterChange({ sizes: [], materials: [], priceRange: [0, 50], colors: [] })}
+                onClick={() => handleFilterChange({ sizes: [], materials: [], priceRange: [0, 100], colors: [] })}
               >
                 Reset filters
               </button>
