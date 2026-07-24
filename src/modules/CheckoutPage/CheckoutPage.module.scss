@@ -1,0 +1,268 @@
+@import "../../shared/index.scss";
+
+.checkoutPage {
+  padding: 0 $padding-mobile $margin-bottom-mobile;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-desktop {
+    padding: 0 $padding-desktop 164px;
+    max-width: none;
+    gap: 20px;
+  }
+}
+
+.checkoutPage__pageTitle {
+  display: none;
+  margin: 0;
+
+  @include on-desktop {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    color: $gray-4;
+  }
+}
+
+.checkoutPage__backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  padding: 0;
+  margin-bottom: -8px;
+  border: none;
+  background: transparent;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: $primary-color;
+  cursor: pointer;
+
+  img {
+    width: 32px;
+    height: 32px;
+    transform: rotate(180deg);
+  }
+}
+
+.checkoutPage__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    column-gap: 48px;
+    align-items: start;
+  }
+}
+
+.checkoutPage__product {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-desktop {
+    flex-direction: column;
+  }
+}
+
+.checkoutPage__productHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkoutPage__productTitle {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $primary-color;
+
+  @include on-desktop {
+    font-size: 50px;
+  }
+}
+
+.checkoutPage__productPrice {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: $primary-color;
+
+  @include on-desktop {
+    font-size: 40px;
+  }
+}
+
+.checkoutPage__productImage {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+
+  @include on-desktop {
+    width: 100%;
+    max-width: 654px;
+    aspect-ratio: 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.checkoutPage__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.checkoutPage__note {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-style: italic;
+  color: $secondary-color;
+}
+
+.checkoutPage__cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.checkoutItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+
+  @include on-desktop {
+    flex-direction: column;
+  }
+}
+
+.checkoutItem__image {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 8px;
+
+  @include on-desktop {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.checkoutItem__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.checkoutItem__name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+.checkoutItem__price {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+.checkoutItem__quantity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-start;
+  min-width: 96px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid $primary-color;
+  border-radius: 999px;
+  background: transparent;
+  gap: 0;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    font-size: 18px;
+    line-height: 1;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
+  span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary-color;
+    min-width: 16px;
+    text-align: center;
+  }
+}
+
+.checkoutPage__totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: $primary-color;
+
+  @include on-desktop {
+    font-size: 24px;
+  }
+}
+
+.checkoutPage__form {
+  width: 100%;
+}
+
+.checkoutPage__empty {
+  margin: 0;
+  font-size: 18px;
+  color: $primary-color;
+}
+
+.checkoutPage__catalogLink {
+  font-family: "JetBrains Mono", monospace;
+  color: $button-color;
+  text-decoration: none;
+}

@@ -1,0 +1,262 @@
+@import "../../shared/index.scss";
+
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkoutForm__field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  > span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: $primary-color;
+  }
+
+  input,
+  select {
+    width: 100%;
+    min-height: 48px;
+    padding: 16px 24px;
+    border: 1px solid $primary-color;
+    border-radius: 999px;
+    background-color: transparent;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: $primary-color;
+    outline: none;
+    transition: border-color 0.2s ease;
+
+    &::placeholder {
+      font-style: italic;
+      font-weight: 300;
+      color: $secondary-color;
+    }
+
+    &:focus {
+      border-color: $button-color;
+    }
+  }
+}
+
+.checkoutForm__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23292A2B' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  padding-right: 44px;
+  color: $secondary-color;
+  font-style: italic;
+
+  &:valid {
+    color: $primary-color;
+    font-style: normal;
+  }
+}
+
+.checkoutForm__phone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 28px;
+  border: 1px solid $primary-color;
+  border-radius: 999px;
+  background-color: transparent;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    min-height: auto;
+    padding: 12px 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+
+    &:focus {
+      border: none;
+    }
+  }
+}
+
+.checkoutForm__phonePrefix {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: $primary-color;
+
+  img {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+  }
+}
+
+.checkoutForm__cvv {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  input {
+    width: 66px;
+    height: 66px;
+    min-height: 66px;
+    padding: 0;
+    border-radius: 4px;
+    border: 1px solid $button-color;
+    background-color: $gray-4;
+    text-align: center;
+    font-size: 16px;
+
+    &::placeholder {
+      color: $gray-3;
+      font-style: normal;
+    }
+  }
+}
+
+.checkoutForm__remember {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 4px 0;
+  cursor: pointer;
+  user-select: none;
+
+  > span:first-child {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    color: $primary-color;
+  }
+}
+
+.checkoutForm__rememberInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.checkoutForm__rememberBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  background-color: $primary-color;
+
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+}
+
+.checkoutForm__payButton {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 999px;
+  background-color: $button-color;
+  color: $white-color;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.successModal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.successModal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(41, 42, 43, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.successModal__card {
+  position: relative;
+  z-index: 1;
+  width: 620px;
+  height: 300px;
+  padding: 50px 28px;
+  border-radius: 4px;
+  border: 1px solid $primary-color;
+  background: $white-color;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+  text-align: center;
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  p {
+    margin: 0 0 24px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $secondary-color;
+  }
+}
+
+.successModal__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 120px;
+  min-height: 40px;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 999px;
+  background-color: $button-color;
+  color: $white-color;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -33,6 +33,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
             product={product}
             buttonVariant={buttonVariant}
             variant={layout === "carousel" ? "carousel" : "default"}
+            detailPath={`/store/${product.id}`}
           />
         </div>
       ))}

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./HeroSection.module.scss";
+import { useAuth } from "../../context/AuthContext";
 
 export const HeroSection: React.FC = () => {
+  const { user } = useAuth();
   const logoUrl = "img/Logo-Drimayko-Light.svg";
 
   return (
@@ -9,7 +11,7 @@ export const HeroSection: React.FC = () => {
       <div className={styles.container__logo}>
         <img src={logoUrl} alt="Drimayko" />
       </div>
-      
+
       <div className={styles.container__info}>
         <div className={styles.container__imgs}>
           <img src="img/mainPic/mainPillow.png" alt="Main pillow" />
@@ -42,11 +44,13 @@ export const HeroSection: React.FC = () => {
               to="/profile"
               className={`${styles.button} ${styles["button--secondary"]}`}
             >
-              <span className={styles.buttonText}>Create a profile</span>
+              <span className={styles.buttonText}>
+                {user ? "My profile" : "Create a profile"}
+              </span>
               <img
                 className={styles.buttonIcon}
                 src="img/icons/Arrow-right-black.svg"
-                alt="Create a profile"
+                alt={user ? "My profile" : "Create a profile"}
               />
             </Link>
           </div>

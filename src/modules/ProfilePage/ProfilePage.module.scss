@@ -1,99 +1,498 @@
 @import "../../shared/index.scss";
 
 .profilePage {
-  padding: 60px 16px;
-  background-color: $page-color;
-  min-height: calc(100vh - 260px);
+  padding: 24px $padding-mobile $margin-bottom-mobile;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  box-sizing: border-box;
 
   @include on-desktop {
-    padding: 80px 56px;
+    position: relative;
+    max-width: none;
+    margin: 0;
+    min-height: 640px;
   }
 }
 
-.profilePage__panel {
-  max-width: 540px;
-  margin: 0 auto;
-  background-color: $white-color;
-  border: 1px solid $gray-4;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-}
+.authLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-.profilePage__title {
-  margin: 0 0 8px;
-  color: $primary-color;
-  font-size: 28px;
-  line-height: 1.2;
-}
-
-.profilePage__subtitle {
-  margin: 0 0 24px;
-  color: $secondary-color;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.profilePage__form {
-  display: grid;
-  gap: 14px;
-}
-
-.field {
-  display: grid;
-  gap: 8px;
-  color: $secondary-color;
-
-  span {
-    font-size: 14px;
-    font-weight: 600;
-    color: $primary-color;
+  @include on-desktop {
+    position: relative;
+    min-height: 640px;
   }
+}
 
-  input {
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include on-desktop {
     width: 100%;
-    padding: 12px 14px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+.authAside {
+  display: none;
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 220px;
+  }
+}
+
+.authAside__text {
+  margin: 0;
+  max-width: 220px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: $secondary-color;
+}
+
+.authAside__image {
+  width: 205px;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+.authForm__field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  > span {
+    font-family: "JetBrains Mono", monospace;
     font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid $gray-4;
-    background-color: $white-color;
+    font-weight: 500;
+    padding-left: 24px;
     color: $primary-color;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    min-height: 48px;
+    padding: 16px 24px;
+    border: 1px solid $primary-color;
+    border-radius: 999px;
+    background-color: transparent;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: $primary-color;
+    outline: none;
+
+    &::placeholder {
+      font-style: italic;
+      font-weight: 300;
+      color: $secondary-color;
+    }
 
     &:focus {
-      outline: 2px solid $button-color;
       border-color: $button-color;
     }
   }
 }
 
-.submitButton,
-.resetButton {
-  margin-top: 8px;
-  width: 100%;
-  background-color: $button-color;
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  cursor: pointer;
+.authForm__passwordWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
 
-  &:hover {
-    background-color: darken($button-color, 5%);
+  input {
+    width: 100%;
+    min-height: 48px;
+    padding: 16px 24px;
+    border: 1px solid $primary-color;
+    border-radius: 999px;
+    background-color: transparent;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: $primary-color;
+    outline: none;
+
+    &:focus {
+      border-color: $button-color;
+    }
   }
 }
 
-.successMessage {
-  text-align: center;
+.authForm__passwordDots {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 137px;
+  height: 8px;
+  pointer-events: none;
+}
 
-  h2 {
-    margin: 0 0 12px;
+.authForm__code {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  input {
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    border: 1px solid $button-color;
+    border-radius: 4px;
+    background-color: $gray-4;
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 18px;
+    color: $primary-color;
+    outline: none;
+
+    &::placeholder {
+      color: $gray-3;
+      font-style: normal;
+    }
+  }
+}
+
+.authForm__link {
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: $button-color;
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: left;
+}
+
+.authForm__forgot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin: 0;
+
+  span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
     color: $primary-color;
   }
 
-  p {
-    margin: 0 0 20px;
-    color: $secondary-color;
-    line-height: 1.5;
+  button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0072F3;
+    text-decoration: underline;
+    cursor: pointer;
   }
+}
+
+.authForm__rules {
+  p {
+    margin: 0 0 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: $primary-color;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-style: italic;
+    font-weight: 300;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: $primary-color;
+  }
+}
+
+.authForm__ruleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: $gray-4;
+
+  img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+}
+
+.authForm__rule--ok {
+  color: $primary-color;
+}
+
+.authForm__notifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 4px;
+}
+
+.authForm__notificationsLine {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $gray-4;
+}
+
+.authForm__notificationsLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 300;
+  font-style: italic;
+  color: $primary-color;
+  text-align: center;
+  cursor: pointer;
+
+  input {
+    width: 16px;
+    height: 16px;
+    accent-color: $button-color;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+}
+
+.authForm__error,
+.authForm__info {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+}
+
+.authForm__error {
+  color: #b42318;
+}
+
+.authForm__info {
+  color: $button-color;
+}
+
+.authForm__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.authForm__dividers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $gray-4;
+  }
+}
+
+.authForm__dividers--single {
+  margin-top: 8px;
+}
+
+.authForm__dividers--double {
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.authButton,
+.authButtonSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.authButton {
+  border: none;
+  background-color: $button-color;
+  color: $white-color;
+}
+
+.authButtonSecondary {
+  border: 1px solid $primary-color;
+  background-color: transparent;
+  color: $primary-color;
+}
+
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.profileCard__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.profileCard__name {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+.profileCard__email {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: $secondary-color;
+}
+
+.confirmModal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmModal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(41, 42, 43, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.confirmModal__card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 320px);
+  padding: 20px 28px;
+  border-radius: 4px;
+  border: 1px solid $primary-color;
+  background: $white-color;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+  text-align: center;
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 24px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.confirmModal__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.confirmModal__yes,
+.confirmModal__no {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.confirmModal__yes {
+  border: none;
+  background-color: $button-color;
+  color: $white-color;
+}
+
+.confirmModal__no {
+  border: 1px solid $primary-color;
+  background: transparent;
+  color: $primary-color;
 }

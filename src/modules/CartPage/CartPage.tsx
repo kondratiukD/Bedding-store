@@ -1,140 +1,88 @@
 import { useMemo } from 'react';
-import styles from './CartPage.module.scss';
 import { Link } from 'react-router-dom';
+import { CheckoutForm } from '../../components/CheckoutForm';
+import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
+import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
-  const { cartItems, updateQuantity, removeFromCart } = useCart();
+  const { user } = useAuth();
+  const { cartItems, updateQuantity } = useCart();
 
-  const totals = useMemo(() => {
-    const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const shipping = subtotal > 0 ? 5 : 0;
-    const tax = subtotal * 0.1;
-    const total = subtotal + shipping + tax;
+  const total = useMemo(
+    () => cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [cartItems],
+  );
 
-    return {
-      subtotal: subtotal.toFixed(2),
-      shipping: shipping.toFixed(2),
-      tax: tax.toFixed(2),
-      total: total.toFixed(2),
-    };
-  }, [cartItems]);
+  if (cartItems.length === 0) {
+    return (
+      <div className={styles.cartPage}>
+        <div className={styles.cartPage__empty}>
+          <p className={styles.cartPage__emptyText}>Your cart is empty</p>
+          <p className={styles.cartPage__emptySubtext}>
+            Add some wonderful bedding to get started!
+          </p>
+          <Link to="/store" className={styles.cartPage__emptyButton}>
+            Continue Shopping
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.cartPage}>
-      <h1 className={styles.cartPage__title}>Shopping Cart</h1>
+      {!user && (
+        <p className={styles.cartPage__note}>
+          If you are not registered, all items in the cart will be lost.
+        </p>
+      )}
 
-      {cartItems.length === 0 ? (
-        <div className={styles.cartPage__empty}>
-          <div className={styles.cartPage__emptyContent}>
-            <p className={styles.cartPage__emptyText}>Your cart is empty</p>
-            <p className={styles.cartPage__emptySubtext}>
-              Add some wonderful bedding to get started!
-            </p>
-            <Link to="/store" className={styles.cartPage__emptyButton}>
-              Continue Shopping
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <div className={styles.cartPage__container}>
+      <div className={styles.cartPage__layout}>
+        <div className={styles.cartPage__summary}>
           <div className={styles.cartPage__items}>
             {cartItems.map((item) => (
               <div key={item.id} className={styles.cartItem}>
                 <div className={styles.cartItem__image}>
                   <img src={item.image} alt={item.name} loading="lazy" decoding="async" />
                 </div>
-
-                <div className={styles.cartItem__details}>
-                  <h3 className={styles.cartItem__name}>{item.name}</h3>
-                  <p className={styles.cartItem__material}>({item.material})</p>
-                  <p className={styles.cartItem__price}>${item.price}</p>
-                </div>
-
+                <p className={styles.cartItem__name}>Bed linen &quot;{item.name}&quot;</p>
+                <p className={styles.cartItem__price}>
+                  {Number.isInteger(item.price) ? `${item.price} $` : `${item.price.toFixed(2)} $`}
+                </p>
                 <div className={styles.cartItem__quantity}>
-                  <label htmlFor={`qty-${item.id}`} className={styles.cartItem__label}>
-                    Qty
-                  </label>
-                  <div className={styles.cartItem__controls}>
-                    <button
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className={styles.cartItem__button}
-                      aria-label="Decrease quantity"
-                    >
-                      −
-                    </button>
-                    <input
-                      id={`qty-${item.id}`}
-                      type="number"
-                      min="1"
-                      value={item.quantity}
-                      onChange={(e) => updateQuantity(item.id, parseInt(e.target.value) || 1)}
-                      className={styles.cartItem__input}
-                    />
-                    <button
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className={styles.cartItem__button}
-                      aria-label="Increase quantity"
-                    >
-                      +
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button
+                    type="button"
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
                 </div>
-
-                <div className={styles.cartItem__price}>
-                  <p className={styles.cartItem__itemTotal}>
-                    ${(item.price * item.quantity).toFixed(2)}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  className={styles.cartItem__remove}
-                  aria-label={`Remove ${item.name} from cart`}
-                >
-                  ✕
-                </button>
               </div>
             ))}
           </div>
 
-          <div className={styles.cartPage__summary}>
-            <div className={styles.summary}>
-              <h2 className={styles.summary__title}>Order Summary</h2>
-
-              <div className={styles.summary__row}>
-                <span className={styles.summary__label}>Subtotal</span>
-                <span className={styles.summary__value}>${totals.subtotal}</span>
-              </div>
-
-              <div className={styles.summary__row}>
-                <span className={styles.summary__label}>Shipping</span>
-                <span className={styles.summary__value}>${totals.shipping}</span>
-              </div>
-
-              <div className={styles.summary__row}>
-                <span className={styles.summary__label}>Tax (10%)</span>
-                <span className={styles.summary__value}>${totals.tax}</span>
-              </div>
-
-              <div className={styles.summary__divider} />
-
-              <div className={styles.summary__row + ' ' + styles['summary__row--total']}>
-                <span className={styles.summary__label}>Total</span>
-                <span className={styles.summary__value}>${totals.total}</span>
-              </div>
-
-              <button className={styles.summary__button}>
-                Proceed to Checkout
-              </button>
-
-              <Link to="/store" className={styles.summary__link}>
-                Continue Shopping
-              </Link>
-            </div>
+          <div className={styles.cartPage__total}>
+            <span className={styles.cartPage__totalLabel}>Total</span>
+            <span className={styles.cartPage__totalValue}>
+              {Number.isInteger(total) ? `${total} $` : `${total.toFixed(2)} $`}
+            </span>
           </div>
         </div>
-      )}
+
+        <div className={styles.cartPage__form}>
+          <CheckoutForm />
+        </div>
+      </div>
     </div>
   );
 };

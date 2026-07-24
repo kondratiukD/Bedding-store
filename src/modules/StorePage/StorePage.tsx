@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, type ChangeEvent } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductFilter, type FilterOptions } from '../../components/ProductFilter';
 import { Pagination } from '../../components/Pagination';
@@ -7,12 +7,9 @@ import styles from './StorePage.module.scss';
 
 const ITEMS_PER_PAGE = 6;
 
-type SortOption = 'default' | 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc';
-
 export const StorePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [sortOption, setSortOption] = useState<SortOption>('default');
   const [filters, setFilters] = useState<FilterOptions>({
     sizes: [],
     materials: [],
@@ -49,38 +46,16 @@ export const StorePage: React.FC = () => {
     });
   }, [filters]);
 
-  const sortedProducts = useMemo(() => {
-    const products = [...filteredProducts];
-
-    switch (sortOption) {
-      case 'price-asc':
-        return products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-      case 'price-desc':
-        return products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-      case 'name-asc':
-        return products.sort((a, b) => a.name.localeCompare(b.name));
-      case 'name-desc':
-        return products.sort((a, b) => b.name.localeCompare(a.name));
-      default:
-        return products;
-    }
-  }, [filteredProducts, sortOption]);
-
-  const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
   const displayedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
-    return sortedProducts.slice(startIndex, endIndex);
-  }, [sortedProducts, currentPage]);
+    return filteredProducts.slice(startIndex, endIndex);
+  }, [filteredProducts, currentPage]);
 
   const handleFilterChange = useCallback((newFilters: FilterOptions) => {
     setFilters(newFilters);
-    setCurrentPage(1);
-  }, []);
-
-  const handleSortChange = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
-    setSortOption(event.target.value as SortOption);
     setCurrentPage(1);
   }, []);
 
@@ -101,9 +76,8 @@ export const StorePage: React.FC = () => {
             type="button"
             className={`${styles.storePage__filterButton} ${isFilterOpen ? styles['storePage__filterButton--open'] : ''}`}
             onClick={() => setIsFilterOpen((prev) => !prev)}
-            aria-label={isFilterOpen ? 'Close filters' : 'Open filters'}
-          >
-            <span>{isFilterOpen ? 'Close filters' : 'Open filters'}</span>
+            aria-label={isFilterOpen ? 'Close filters' : 'Filters'}
+          >            
             <img
               src="img/icons/Arrow-right-light.svg"
               alt="Toggle filters"
@@ -111,6 +85,10 @@ export const StorePage: React.FC = () => {
               className={isFilterOpen ? styles.storePage__filterIconOpen : styles.storePage__filterIcon}
             />
           </button>
+
+          <span className={styles.storePage__filterLabel}>
+            {isFilterOpen ? 'Close filters' : 'Filters'}
+          </span>
 
           <ProductFilter
             filters={filters}
@@ -121,27 +99,6 @@ export const StorePage: React.FC = () => {
             isOpen={isFilterOpen}
             onClose={handleCloseFilter}
           />
-        </div>
-
-        <div className={styles.storePage__stats}>
-          <div className={styles.storePage__sortGroup}>
-            <label htmlFor="sortOption" className={styles.storePage__sortLabel}>
-              Sort by
-            </label>
-            <select
-              id="sortOption"
-              value={sortOption}
-              onChange={handleSortChange}
-              className={styles.storePage__sortSelect}
-            >
-              <option value="default">Default</option>
-              <option value="price-asc">Price: low to high</option>
-              <option value="price-desc">Price: high to low</option>
-              <option value="name-asc">Name: A–Z</option>
-              <option value="name-desc">Name: Z–A</option>
-            </select>
-          </div>
-          <span className={styles.storePage__count}>{sortedProducts.length} products</span>
         </div>
       </div>
 
@@ -170,7 +127,7 @@ export const StorePage: React.FC = () => {
             </>
           ) : (
             <div className={styles.storePage__empty}>
-              <p>No products found matching your filters.</p>
+              <p className={styles.storePage__emptyText}>No products found matching your filters.</p>
               <button
                 type="button"
                 className={styles.storePage__resetButton}
